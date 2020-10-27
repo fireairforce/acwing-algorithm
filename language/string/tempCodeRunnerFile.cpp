@@ -24,7 +24,8 @@ int main () {
           if (!flag) {
             break;
           }
-          res += s[0][s[0].size() - i + 1];
+          res += s[0][i];
         }
     }
+    return 0;
 }
