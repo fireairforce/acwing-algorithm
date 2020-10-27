@@ -5,26 +5,25 @@
 using namespace std;
 int main () {
     string s;
-    getline(cin , s);
+    getline(cin, s);
     int maxCount = -1;
     string res;
-    for (int i = 0;i < s.size(); i++) {
-        if (s[i] != ' ') {
-            for (int j = i + 1;j < s.size();j++) {
-                if (s[j] != ' ') {
-                    continue;
-                } else {
-                    if (j - i > maxCount) {
-                        maxCount = j - i;
-                        res = s.substr(i, j);
-                    }
-                    i = j;
-                    break;
-                }
-            }
+    int first = 0;
+    int second = 0;
+    for (int i =0;s[i];i++) {
+        int j = i;
+        while (s[j] != ' ' && s[j] != '.' && j < s.size()) {
+            j ++;
         }
+        if (maxCount < j - i + 1) {
+            first = i;
+            second = j;
+            maxCount = j - i + 1;
+        }
+        i = j;
     }
-    cout << res << endl;
+    for (int i = first;i<=second && s[i] != '.';i++) {
+        cout << s[i];
+    }
+    cout << endl;
 }
-
-// I am a student of Peking University.
