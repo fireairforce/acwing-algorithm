@@ -18,6 +18,7 @@ int q[N];
 void quick_sort(int a[], int l , int r) {
     if (l >= r) return;
     // 先取到中枢的值
+    // 注意这里一定要取出来值，如果取下标会wa
     int x = a[(l + r ) >> 1], i = l - 1, j = r + 1;
     // 然后用两根指针去扫
     while (i < j) {
@@ -150,3 +151,40 @@ int bsearch_2 (int l, int r) {
 
 一般二分问题我们先写一个 check 函数，然后思考如果根据 check 的结果去更新我们的区间。
 
+
+## 浮点数二分
+相比较于整数二分，浮点数二分没有那么多边界条件需要处理。
+
+以求平方根为例子:
+```cpp
+#include<iostream>
+using namespace std;
+int main () {
+  double x;
+  cin >> x;
+  double l = 0, r = x;
+  // 根据精度就可以判定是否结束循环了
+  while (r - l > 1e-8) {
+    double mid = (l + r) >> 1;
+    if (mid * mid >= x) {
+       r = mid;
+    } else {
+      l = mid;
+    }
+  }
+  cout << l << endl;
+  return 0;
+}
+```
+
+浮点数二分也可以直接改成迭代的写法(直接迭代100次):
+```cpp
+for (int i = 0;i<100;i++) {
+  double mid = (l + r) >> 1;
+  if (mid * mid >= x) {
+    r = mid;
+  } else {
+    l = mid;
+  }
+}
+```

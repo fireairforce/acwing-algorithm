@@ -14,7 +14,7 @@ void merge_sort(int q[], int l, int r) {
   merge_sort(q, mid + 1, r);
 
   // 归并的过程，把有序数组放入temp里面去
-  int k = 0, i = 1, j = mid + 1;
+  int k = 0, i = l, j = mid + 1;
   while (i <= mid && j <= r)
   {
     if (q[i] <= q[j]) temp[k++] = q[i++];
@@ -41,4 +41,5 @@ int main () {
     cin >> a[i];
   }
   merge_sort(a, 0,n -1);
+  for (int i = 0;i<n;i++) cout << a[i] << " ";
 }
