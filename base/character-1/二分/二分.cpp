@@ -1,9 +1,13 @@
 #include<iostream>
 using namespace std;
 
+bool checked (int x) {
+  return !!x;
+}
+
 int bsearch_1 (int l , int r) {
-  int mid = (l + r) >> 1;
   while (l < r) {
+  int mid = (l + r) >> 1;
     if (checked(mid)) {
       r = mid;
     } else {
@@ -14,8 +18,8 @@ int bsearch_1 (int l , int r) {
 }
 
 int bsearch_2 (int l, int r) {
-  int mid = (l + r + 1) >> 1;
   while (l < r) {
+    int mid = (l + r + 1) >> 1;
     if (checked(mid)) {
       l = mid;
     } else {
