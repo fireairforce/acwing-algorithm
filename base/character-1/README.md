@@ -158,14 +158,15 @@ int bsearch_2 (int l, int r) {
 以求平方根为例子:
 ```cpp
 #include<iostream>
+#include<algorithm>
 using namespace std;
 int main () {
   double x;
   cin >> x;
-  double l = 0, r = x;
+  double l = 0, r = max(1, x);
   // 根据精度就可以判定是否结束循环了
   while (r - l > 1e-8) {
-    double mid = (l + r) >> 1;
+    double mid = (l + r) / 2;
     if (mid * mid >= x) {
        r = mid;
     } else {
