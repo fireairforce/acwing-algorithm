@@ -189,3 +189,27 @@ for (int i = 0;i<100;i++) {
   }
 }
 ```
+
+## 高精度加法
+
+```cpp
+vector<int> add(vector<int> &a, vector<int> &b) {
+  if(a.size() < b.size()) {
+    return add(b, a);
+  }
+  int k = 0;
+  vector<int>C;
+  for (int i = 0;i<a.size();i++) {
+    k += a[i];
+    if (i < b.size()) {
+      k += b[i];
+    }
+    C.push_back(k % 10);
+    k /= 10;
+  }
+  if (k) {
+    C.push_back(1);
+  }
+}
+```
+
