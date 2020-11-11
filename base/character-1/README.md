@@ -83,7 +83,7 @@ void merge_sort (int q[], int l, int r) {
   // 然后开始归并，把两个有序序列归并成一个放到一个tmp数组里面去
   while (i <= mid && j <= r) {
     if (q[i] < q[j]) {
-      tmp[k++] = q[i ++];
+      tmp[k++] = q[i++];
     } else {
       tmp[k++] = q[j++];
     }
