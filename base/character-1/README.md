@@ -213,3 +213,8 @@ vector<int> add(vector<int> &a, vector<int> &b) {
 }
 ```
 
+## 高精度减法
+
+```cpp
+ 
+```
