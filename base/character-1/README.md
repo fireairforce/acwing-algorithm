@@ -192,6 +192,8 @@ for (int i = 0;i<100;i++) {
 
 ## 高精度加法
 
+模拟正常情况下的加法就行了
+
 ```cpp
 vector<int> add(vector<int> &a, vector<int> &b) {
   if(a.size() < b.size()) {
@@ -215,6 +217,8 @@ vector<int> add(vector<int> &a, vector<int> &b) {
 
 ## 高精度减法
 
+模版保证 `A >= B`.
+高精度减法分每一位的大小比较，来判断是否需要借位的操作。
 ```cpp
- 
+
 ```

@@ -23,7 +23,7 @@ void quick_sort(int l, int r, int k) {
         quick_sort(l, j, k);
     } else {
         // 这里记得去右边找的值要减去左边区间的数目
-      quick_sort(j + 1, r, k - num);
+        quick_sort(j + 1, r, k - num);
     }
 }
 
