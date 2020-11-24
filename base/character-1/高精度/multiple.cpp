@@ -9,6 +9,7 @@ using namespace std;
 vector<int> mul(vector<int> &A, int b) {
   vector<int> C;
   int t = 0;
+  // 只要 t 不为 0 或者 A 还没有遍历完成就一直做下去
   for (int i = 0;i<A.size() || t; i ++) {
     // 如果A还没有枚举完，就t加上A[i]*b的一个结果
     if (i < A.size()) {
