@@ -39,7 +39,7 @@ int main () {
     }
   }
   for (int i = 1;i<=m;i++) {
-    for (int i = j;j<=n;j++) {
+    for (int j=1;j<=n;j++) {
       cout << a[i][j] << " ";
     }
     cout << endl;
