@@ -268,3 +268,103 @@ for (int i = 0,j = 0; i < n; i++) {
   // 每道题目的具体逻辑
 }
 ```
+
+## 常用的位运算操作
+
+### 求一个整数n的二进制表示的第k位数字是几
+
+例如: n = 15 = (1111)2
+
+个位当作第 0 位.
+
+1. 先把第 k 位数字移到最后一位 n >> k
+2. 看下个位是多少，例如个位是x,x & 1 就可以知道个位是多少了
+
+```cpp
+n >> k & 1;
+```
+
+如上式子即可。
+
+### lowbit
+lowbit 是树状数组的一个基本操作，lowbit 的作用是返回数字 x 最后一个 1 的位置.
+
+```cpp
+x = 1010 lowbit(x) = 10
+x = 101000 lowbit(x) = 1000
+```
+
+操作方法就是: 
+```cpp
+lowbit(x) = x & -x
+// 因为在 cpp 中
+-x = ~x + 1;
+// so 
+x & -x = x & (~x + 1);
+// 具体的操作可以自己手画图来表示一下。
+```
+
+借助于 lowbit 可以统计一下 x 二进制里面1的个数
+每次循环的时候，都减去这个数的 lowbit 值，能求出 x 里面 1 的个数
+
+```cpp
+#include<iostream>
+
+using namespace std;
+
+int lowbit (int x) {
+    return x & -x;
+}
+
+int main () {
+    int n;
+    cin >> n;
+    while (n --) {
+        int x;
+        cin >> x;
+        int res = 0;
+        while (x) {
+            // 每次减去 x 里面的1
+            x -= lowbit(x);
+            res ++;
+        }
+        cout << res << " ";
+        
+    }
+    return 0;
+}
+```
+
+## 离散化
+
+离散化这里特指整数的离散化。
+
+把一些范围很大，但是值很少的一些数值映射一下，如下表示
+
+```bash
+// 注意a数组要求是有序的
+a[i]  1 3 1000 2000 500000
+     0  1  2     3    4
+```
+- a[] 中可能有重复元素(去重)
+- 如何算出 a[i] 离散化之后的值(二分)
+
+去重可以采用 cpp 里面的一些库函数
+
+```cpp
+vector<int> alls;  // 存储所有待离散化的值
+sort(alls.begin(), alls.end());  // 将所有数值排序
+alls.earse(unique(alls.begin(), alls.end()), alls.end()); // 去掉重复元素
+
+// 二分求出 x 对应的离散化的值
+
+int find (int x) { // 找到第一个大于等于 x的位置，然后返回+1的值
+  int l = 0 , r = alls.size() - 1;
+  while (l < r) {
+    int mid = l + r >> 1;
+    if (alls[mid] >= x) r = mid;
+    else l = mid + 1;
+  }
+  return r + 1; // +1 的话就从 1 开始映射，1...alls.length, 否则从0开始
+}
+```
