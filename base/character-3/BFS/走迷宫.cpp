@@ -17,7 +17,7 @@ pair<int, int> q[N * N];
 int bfs () {
   int hh = 0, tt = 0;
 
-  q[0].first = q[0].second = 0;
+  q[0] = make_pair(0, 0);
 
   memset(d, -1, sizeof(d));
   d[0][0] = 0;
@@ -33,9 +33,7 @@ int bfs () {
       int x = t.first + dx[i], y = t.second + dy[i];
       if (x >= 0 && x < n && y >= 0 && y < m && g[x][y] == 0 && d[x][y] == -1){
         d[x][y] = d[t.first][t.second] + 1;
-        tt ++;
-        q[tt].first = x;
-        q[tt].second = y;
+        q[++tt] = make_pair(x, y);
       }
     }
   }
