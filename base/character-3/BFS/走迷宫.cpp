@@ -18,6 +18,7 @@ PII q[N * N], Prev[N][N];
 int bfs () {
   int hh = 0, tt = 0;
 
+// 因为这里有波初始化，所以 hh 初始值是 -1
   q[0] = make_pair(0, 0);
 
   memset(d, -1, sizeof(d));
