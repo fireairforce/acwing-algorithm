@@ -1,4 +1,5 @@
 #include<iostream>
+#include<algorithm>
 
 using namespace std;
 
@@ -47,6 +48,7 @@ int dfs(int u) {
 int main () {
   // 把 h 里面的值初始化成 -1
   cin >> n;
+  // memset 是按照字节去进行赋值的，可以对数组进行 -1 和 0 的初始化赋值
   memset(h, -1, sizeof h);
   
   for (int i = 0; i < n - 1; i++) {
