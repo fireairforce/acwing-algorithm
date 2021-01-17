@@ -11,7 +11,8 @@ int n,m;
 int d[N][N];
 int g[N][N];
 
-pair<int, int> q[N * N];
+// prev 记录前面一个点是从哪里过来的
+PII q[N * N], Prev[N][N];
 
 
 int bfs () {
@@ -33,9 +34,17 @@ int bfs () {
       int x = t.first + dx[i], y = t.second + dy[i];
       if (x >= 0 && x < n && y >= 0 && y < m && g[x][y] == 0 && d[x][y] == -1){
         d[x][y] = d[t.first][t.second] + 1;
+        Prev[x][y] = t;
         q[++tt] = make_pair(x, y);
       }
     }
+  }
+  int x = n - 1, y = m - 1;
+  // 沿着终点往回推就可以得出 bfs 搜索过来的路径了
+  while (x || y) {
+    cout << x << ' ' << y << endl;
+    auto t = Prev[x][y];
+    x = t.first, y = t.second;
   }
   return d[n-1][m-1];
 }
