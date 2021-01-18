@@ -11,7 +11,7 @@ int h[N], e[N], ne[N], idx;
 // d 表示存 入度的数组
 int q[N], d[N];
 
-// 这一步是构建图的操作，没看太明白
+// 这一步构建领接表, 用来存图
 void add(int a, int b) {
   e[idx] = b, ne[idx] = h[a], h[a] = idx++;
 }
