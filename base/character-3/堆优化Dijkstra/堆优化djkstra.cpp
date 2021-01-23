@@ -35,9 +35,12 @@ int dijkstra () {
     auto t = heap.top();
     heap.pop();
 
+    // distance 是(点t)距离，ver 是点
     int ver = t.second, distance = t.first;
     // 如果这个点已经被计算过了，就直接跳了
     if (st[ver]) continue;
+    // 这里记得加上这个判断
+    st[ver] = true;
     // 这里的时间复杂度只有 m
     for (int i = h[ver]; i != -1; i = ne[i]) {
       int j = e[i];
