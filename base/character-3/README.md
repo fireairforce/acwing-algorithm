@@ -135,3 +135,21 @@ bellman-ford 算法用于求用负权边的情况，如果存在负权回路的�
 如果要使用 spfa 算法就一定不能要求有负环。
 
 如果限制了经过边的数目，则只能使用 bellman-ford 算法.
+
+### spfa 算法
+spfa 算法本质上是对 bellman-ford 算法做了一次优化。
+
+使用宽搜来做优化(迭代的时候使用一个队列来做优化。
+
+```bash
+queue <- 1
+while queue 不空
+  1. t <- q.front
+    q.pop()
+  2. 更新 t 的所有出边 t ->(w) b
+    queue <- b
+```
+
+写法有点像 dijkstra.
+
+一般 spfa 用不了的话，就可以换成堆优化的 dijkstra，一般最短路的算法都可以用 spfa 来求解。

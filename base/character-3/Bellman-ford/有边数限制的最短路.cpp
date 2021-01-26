@@ -44,7 +44,9 @@ int main () {
   for (int i = 0; i < m; i++) {
     int a, b, w;
     cin >> a >> b >> w;
-    edges[i] = {a, b, w};
+    edges[i].a = a;
+    edges[i].b = b;
+    edges[i].w = w;
   }
   int t = bellman_ford();
 
