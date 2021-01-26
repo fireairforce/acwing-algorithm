@@ -153,3 +153,15 @@ while queue 不空
 写法有点像 dijkstra.
 
 一般 spfa 用不了的话，就可以换成堆优化的 dijkstra，一般最短路的算法都可以用 spfa 来求解。
+
+spfa 算法求负环思路同 bellman-ford 算法，都是利用了抽屉原理的概念。
+
+维护一个 cnt 数组用来表示到达点x所走的边数
+如果这个 cnt 数组在某一个时刻，达到了 cnt[x] >=n，那么负环就判断出来了。
+```
+dist[x] 表示(1~x)最短距离
+cnt[x] 当前最短路的边数 
+
+每次更新的时候 dist[x] = dist[t] + w[i]
+则 cnt[x] = cnt[t] + 1;
+```
