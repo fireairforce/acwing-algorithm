@@ -18,10 +18,12 @@ int prim() {
   for (int i = 0; i< n; i++) {
     int t = -1;
     for (int j = 1;j<=n;j++) {
+      // 每次先找到最小值
       if (!st[j] && (t==-1 || dist[t] > dist[j])) {
         t = j;
       }
     }
+    // 用这个值去更新其他值
     if (i && dist[t] == INF) return INF;
     if (i) res += dist[t];
     // 这里的 dist 表示点到集合里面点的最短距离
