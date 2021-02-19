@@ -12,7 +12,6 @@ int tt = 0;
 
 int main () {
     cin >> m;
-    getchar();
     while (m --) {
         string str;
         int n;
@@ -25,7 +24,9 @@ int main () {
             tt--;
         } else if (str == "empty") {
             if (tt > 0) {
-              puts("not empty");
+              puts("NO");
+            } else {
+              puts("YES");
             }
         }
     }

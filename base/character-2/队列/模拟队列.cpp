@@ -12,7 +12,6 @@ int m;
 int main () {
     cin >> m;
     int tt = -1, hh = 0;
-    getchar();
     while (m --) {
         string str;
         int n;
