@@ -6,29 +6,26 @@
 
 using namespace std;
 const int N = 100010;
-int q[N];
+int stk[N];
 int m;
+int tt = 0;
 
 int main () {
     cin >> m;
-    int tt = -1, hh = 0;
     getchar();
     while (m --) {
         string str;
         int n;
         cin >> str;
         if (str == "query") {
-            cout << q[hh] << endl;
         } else if (str == "push") {
             cin >> n;
-            q[++tt] = n;
+            stk[++tt] = n;
         } else if (str == "pop") {
-            hh++;
+            tt--;
         } else if (str == "empty") {
-            if (hh > tt) {
-                cout << "YES" << endl;
-            } else {
-                cout << "NO" << endl;
+            if (tt > 0) {
+              puts("not empty");
             }
         }
     }
